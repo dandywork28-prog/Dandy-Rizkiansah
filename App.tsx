@@ -56,6 +56,7 @@ const App: React.FC = () => {
 
     try {
       // 1. Central Manager Routing
+      // We visually switch to Central Manager to show analysis is happening
       setActiveAgent(AgentType.CENTRAL_MANAGER);
       const routingResult = await routeRequest(userMsg.content);
 
@@ -156,7 +157,10 @@ const App: React.FC = () => {
       
       {/* Sidebar (Responsive) */}
       <div className={`fixed inset-y-0 left-0 transform ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'} md:relative md:translate-x-0 transition duration-200 ease-in-out z-40`}>
-        <Sidebar activeAgent={activeAgent} />
+        <Sidebar activeAgent={activeAgent} onAgentSelect={(agent) => {
+          setActiveAgent(agent);
+          setIsMobileMenuOpen(false); // Close menu on mobile when selected
+        }} />
       </div>
 
       <main className="flex-1 flex flex-col h-full relative glass-panel m-0 md:m-4 md:rounded-3xl shadow-2xl overflow-hidden border border-white/40">
@@ -234,7 +238,7 @@ const App: React.FC = () => {
                 disabled={!inputText.trim() || isProcessing}
                 className={`absolute right-2 p-2.5 rounded-xl transition-all duration-300 transform ${
                   inputText.trim() && !isProcessing
-                    ? 'bg-teal-600 text-white hover:bg-teal-700 shadow-lg hover:scale-105 hover:-rotate-12' 
+                    ? 'bg-teal-600 text-white hover:bg-teal-700 shadow-lg hover:scale-105 hover:-rotate-12 cursor-pointer' 
                     : 'bg-slate-200 text-slate-400 cursor-not-allowed'
                 }`}
               >
