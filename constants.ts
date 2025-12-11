@@ -25,7 +25,7 @@ export const AGENT_PROMPTS: Record<AgentType, string> = {
 };
 
 export const AGENT_COLORS: Record<AgentType, string> = {
-  [AgentType.CENTRAL_MANAGER]: 'bg-gray-800 text-white',
+  [AgentType.CENTRAL_MANAGER]: 'bg-slate-800 text-white',
   [AgentType.ADMISSION]: 'bg-blue-600 text-white',
   [AgentType.SCHEDULING]: 'bg-purple-600 text-white',
   [AgentType.PHARMACY]: 'bg-emerald-600 text-white',
