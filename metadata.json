@@ -1,0 +1,5 @@
+{
+  "name": "Sistem Rumah sakit APP Dandy Rizkiansah",
+  "description": "An agentic hospital operations system where a Central Manager AI delegates tasks to specialized sub-agents for Admission, Scheduling, Pharmacy, and Billing.",
+  "requestFramePermissions": []
+}
