@@ -79,16 +79,11 @@ export const routeRequest = async (userMessage: string): Promise<DelegationResul
       }
     });
 
-    const candidates = response.candidates;
-    if (!candidates || candidates.length === 0) {
-      throw new Error("No response from Central Manager");
-    }
+    // Check for function calls using the helper property from the SDK
+    const functionCalls = response.functionCalls;
 
-    const firstPart = candidates[0].content.parts[0];
-
-    // Check for function calls
-    if (firstPart.functionCall) {
-      const call = firstPart.functionCall;
+    if (functionCalls && functionCalls.length > 0) {
+      const call = functionCalls[0];
       const args = call.args as any;
       
       let targetAgent = AgentType.CENTRAL_MANAGER;
